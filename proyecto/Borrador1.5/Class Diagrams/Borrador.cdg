@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Borrador">
+  <ClassDiagramComponents>
+    <Class name="Usuario" package="" visibility="public" xPosition="398.0" yPosition="33.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="numeroCelular" type="int" visibility="private"/>
+        <Field name="idUsuario" type="int" visibility="private"/>
+        <Field name="ingresoPin" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="iniciarSesion" returnType="boolean" visibility="public"/>
+        <Method name="cerrarSesion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Reserva" package="" visibility="public" xPosition="960.0" yPosition="341.0">
+      <Fields>
+        <Field name="idReserva" type="int" visibility="private"/>
+        <Field name="nombreReserva" type="String" visibility="private"/>
+        <Field name="fechaInicio" type="Date" visibility="private"/>
+        <Field name="fechaFin" type="Date" visibility="private"/>
+        <Field name="horaInicio" type="time" visibility="private"/>
+        <Field name="horaFin" type="time" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Reserva" returnType="boolean" visibility="public">
+          <Argument type="Date" name="date"/>
+          <Argument type="time" name="horaInicio"/>
+          <Argument type="time" name="horaFin"/>
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getestado" returnType="String" visibility="public"/>
+        <Method name="setestado" returnType="String" visibility="public"/>
+        <Method name="validarDisponibilidad" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SistemaReserva" package="" visibility="public" xPosition="864.0" yPosition="14.0">
+      <Fields>
+        <Field name="nivelAcceso" type="int" visibility="private"/>
+        <Field name="listaReservas" type="List&lt;Reserva&gt;" visibility="private"/>
+        <Field name="listaEspaciosDeportivos" type="List&lt;EspacioDeportivo&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="gestionarReservas" returnType="Reserva" visibility="public">
+          <Argument type="Reserva" name="reserva"/>
+        </Method>
+        <Method name="obtenerDisponibilidad" returnType="Recurso" visibility="public">
+          <Argument type="Recurso" name="recurso"/>
+        </Method>
+        <Method name="accionesAdmionistrativas" returnType="void" visibility="public"/>
+        <Method name="crudReservas" returnType="void" visibility="public"/>
+        <Method name="registrar" returnType="Reserva" visibility="public">
+          <Argument type="Usuario" name="usuario"/>
+          <Argument type="Reserva" name="reserva"/>
+        </Method>
+        <Method name="cancelarReserva" returnType="Reserva" visibility="public">
+          <Argument type="Usuario" name="usuario"/>
+          <Argument type="Reserva" name="reserva"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EspacioDeportivo" package="" visibility="public" xPosition="739.0" yPosition="463.0">
+      <Fields>
+        <Field name="nombreEspacio" type="String" visibility="private"/>
+        <Field name="tipoEspacio" type="String" visibility="private"/>
+        <Field name="capacidadEspacio" type="int" visibility="private"/>
+        <Field name="idEspacio" type="int" visibility="private"/>
+        <Field name="ubicacionEspacio" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="verDisponibilidadEspacio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Gimnasio" package="" visibility="public" xPosition="334.0" yPosition="341.0">
+      <Fields>
+        <Field name="horarioApertura" type="time" visibility="private"/>
+        <Field name="capacidadGym" type="int" visibility="private"/>
+        <Field name="capacidadMaquinas" type="int" visibility="private"/>
+        <Field name="anchoGym" type="double" visibility="private"/>
+        <Field name="largoGym" type="double" visibility="private"/>
+        <Field name="horarioCierre" type="time" visibility="private"/>
+        <Field name="servicioMantenimiento" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="serviciosAdicionalesGym" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="maquinasDisponibles" returnType="List&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UsuarioAdministrador" package="" visibility="public" xPosition="28.0" yPosition="14.0">
+      <Fields>
+        <Field name="permisos" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="fechaContratacion" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarEspacio" returnType="void" visibility="public"/>
+        <Method name="eliminarEspacio" returnType="void" visibility="public"/>
+        <Method name="modificarEspacio" returnType="void" visibility="public"/>
+        <Method name="verReservas" returnType="void" visibility="public">
+          <Argument type="List&lt;Reserva&gt;" name="listaReservas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UsuarioCliente" package="" visibility="public" xPosition="28.0" yPosition="230.0">
+      <Fields>
+        <Field name="historialReservas" type="List&lt;Reserva&gt;" visibility="private"/>
+        <Field name="membresia" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="verHistorial" returnType="void" visibility="public">
+          <Argument type="List&lt;Reserva&gt;" name="listaReservas"/>
+        </Method>
+        <Method name="actualizarDatos" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CanchaSintetica" package="" visibility="public" xPosition="42.0" yPosition="406.0">
+      <Fields>
+        <Field name="horarioApertura" type="time" visibility="private"/>
+        <Field name="capacidadCancha" type="int" visibility="private"/>
+        <Field name="cantidadEquipos" type="int" visibility="private"/>
+        <Field name="anchoCancha" type="double" visibility="private"/>
+        <Field name="largoCancha" type="double" visibility="private"/>
+        <Field name="horarioCierre" type="time" visibility="private"/>
+        <Field name="servicioMantenimiento" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="serviciosAdicionalesCancha" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="equiposDisponibles" returnType="List&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AreaNatacion" package="" visibility="public" xPosition="597.0" yPosition="192.0">
+      <Fields>
+        <Field name="horarioApertura" type="time" visibility="private"/>
+        <Field name="capacidadNatacion" type="int" visibility="private"/>
+        <Field name="temperaturaAgua" type="double" visibility="private"/>
+        <Field name="profundidad" type="double" visibility="private"/>
+        <Field name="horarioCierre" type="time" visibility="private"/>
+        <Field name="servicioMantenimiento" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ajustarTemperatura" returnType="void" visibility="public"/>
+        <Method name="serviciosAdicionalesGym" returnType="List&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="UsuarioAdministrador" target="Usuario"/>
+    <IsRelation name="is" source="CanchaSintetica" target="EspacioDeportivo"/>
+    <HasRelation name="depende de" source="SistemaReserva" target="EspacioDeportivo" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="usa" source="Usuario" target="SistemaReserva" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <IsRelation name="is" source="UsuarioCliente" target="Usuario"/>
+    <HasRelation name="Sistema depende de Reserva" source="SistemaReserva" target="Reserva" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="AreaNatacion" target="EspacioDeportivo"/>
+    <IsRelation name="is" source="Gimnasio" target="EspacioDeportivo"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

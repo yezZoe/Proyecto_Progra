@@ -16,7 +16,10 @@ public class Reserva {
     private time horaFin;
 
     private boolean estado;
-
+    public static void main(String [] args){
+        System.out.println("Hola mundo");
+    
+    }
     public boolean Reserva(Date date, time horaInicio, time horaFin, boolean estado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

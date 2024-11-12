@@ -1,3 +1,5 @@
+package Espacios;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +46,8 @@ public class Gym extends EspacioDeportivo{
     /**
      * Muestra la disponibilidad del gimnasio según el idioma seleccionado.
      */
-    @Override
-    public void verDisponibilidadEspacio() {
+    
+    public void verDisponibilidadEspacioGym() {
         super.verDisponibilidadEspacio(); // Llamar al método de la clase base
         
         // Mostrar mensajes según el idioma guardado en 'language'

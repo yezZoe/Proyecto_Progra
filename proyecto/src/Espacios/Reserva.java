@@ -1,3 +1,5 @@
+package Espacios;
+
 
 import java.util.Date;
 
@@ -34,5 +36,13 @@ public class Reserva {
 
     public boolean validarDisponibilidad() {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
     }
 }

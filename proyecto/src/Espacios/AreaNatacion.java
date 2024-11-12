@@ -1,3 +1,5 @@
+package Espacios;
+
 
 import java.time.LocalTime;
 import java.util.List;
@@ -75,12 +77,13 @@ public class AreaNatacion extends EspacioDeportivo {
     /**
      * Muestra la disponibilidad del área de natación con información adicional.
      */
+
     @Override
-    public void verDisponibilidadEspacio() {
-        super.verDisponibilidadEspacio();
-        System.out.println("Horario de apertura: " + horarioApertura);
-        System.out.println("Horario de cierre: " + horarioCierre);
-        System.out.println("Capacidad máxima de nadadores: " + capacidadNatacion);
+    public String verDisponibilidadEspacio() {
+        return super.verDisponibilidadEspacio() +
+        "Horario de apertura: " + horarioApertura +
+        "Horario de cierre: " + horarioCierre +
+        "Capacidad máxima de nadadores: " + capacidadNatacion;
     }
 
    

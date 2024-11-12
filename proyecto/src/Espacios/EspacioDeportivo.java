@@ -1,3 +1,5 @@
+package Espacios;
+
 /**
  * Clase que representa un espacio deportivo con atributos básicos y métodos para gestionar reservas y disponibilidad.
  */
@@ -49,8 +51,13 @@ public class EspacioDeportivo {
     /**
      * Muestra la disponibilidad del espacio deportivo.
      */
-    public void verDisponibilidadEspacio() {
-        System.out.println("Mostrando disponibilidad para el espacio deportivo: " + nombreEspacio);
+     public String verDisponibilidadEspacio() {
+        return "Espacio: " + nombreEspacio + "\n" +
+               "Tipo: " + tipoEspacio + "\n" +
+               "Capacidad: " + capacidadEspacio + "\n" +
+               "ID: " + idEspacio + "\n" +
+               "Ubicación: " + ubicacionEspacio + "\n" +
+               "Disponible: Sí"; // Por ejemplo, siempre disponible en este caso
     }
 
     // Getters y setters 

@@ -41,7 +41,7 @@ public class AreaNatacion extends EspacioDeportivo {
     public AreaNatacion(String nombreEspacio, String tipoEspacio, int capacidadEspacio, int idEspacio, String ubicacionEspacio,
             LocalTime horarioApertura, LocalTime horarioCierre, int capacidadNatacion, double temperaturaAgua,
             double profundidad, boolean servicioMantenimiento) {
-        super(nombreEspacio, tipoEspacio, capacidadEspacio, idEspacio, ubicacionEspacio);
+        super(nombreEspacio, tipoEspacio, capacidadEspacio);
         this.horarioApertura = horarioApertura;
         this.horarioCierre = horarioCierre;
         this.capacidadNatacion = capacidadNatacion;
@@ -76,15 +76,10 @@ public class AreaNatacion extends EspacioDeportivo {
 
     /**
      * Muestra la disponibilidad del área de natación con información adicional.
+     * @return 
      */
 
-    @Override
-    public String verDisponibilidadEspacio() {
-        return super.verDisponibilidadEspacio() +
-        "Horario de apertura: " + horarioApertura +
-        "Horario de cierre: " + horarioCierre +
-        "Capacidad máxima de nadadores: " + capacidadNatacion;
-    }
+    
 
    
     public LocalTime getHorarioApertura() {

@@ -1,29 +1,28 @@
 package Espacios;
 
+/**
+ * Clase que representa un usuario en el sistema de reservas.
+ */
 public class Usuario {
 
     private String nombre;
+    private String identificacion;
 
-    private String email;
-
-    private int numeroCelular;
-
-    private int idUsuario;
-
-    private String ingresoPin;
-
-    public boolean iniciarSesion() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Usuario(String nombre, String email, int numeroCelular, int idUsuario, String ingresoPin) {
+    public Usuario(String nombre, String identificacion) {
         this.nombre = nombre;
-        this.email = email;
-        this.numeroCelular = numeroCelular;
-        this.idUsuario = idUsuario;
-        this.ingresoPin = ingresoPin;
+        this.identificacion = identificacion;
     }
 
-    public void cerrarSesion() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario: " + nombre + ", Identificación: " + identificacion;
     }
 }

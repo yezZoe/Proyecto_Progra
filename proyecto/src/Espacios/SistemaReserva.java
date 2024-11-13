@@ -1,6 +1,5 @@
 package Espacios;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class SistemaReserva {
     private int idReservaActual = 1;
 
     public SistemaReserva() {
-       
+        // Ejemplo de espacios deportivos
         listaEspaciosDeportivos.add(new EspacioDeportivo("Piscina Olímpica", "Natación", 50));
         listaEspaciosDeportivos.add(new EspacioDeportivo("Cancha de Fútbol", "Fútbol", 30));
         listaEspaciosDeportivos.add(new EspacioDeportivo("Gimnasio Principal", "Gimnasia", 20));
@@ -37,11 +36,11 @@ public class SistemaReserva {
         System.out.print("Ingrese su identificación: ");
         String identificacion = scanner.nextLine();
 
-        if (tipoUsuario == 1) { 
+        if (tipoUsuario == 1) { // Cliente
             Usuario usuario = new Usuario(nombre, identificacion);
             listaUsuarios.add(usuario);
             System.out.println("Cliente registrado exitosamente.");
-        } else if (tipoUsuario == 2) { 
+        } else if (tipoUsuario == 2) { // Administrador
             System.out.print("Ingrese su número de carnet: ");
             String numeroCarnet = scanner.nextLine();
             UsuarioAdministrador admin = new UsuarioAdministrador(nombre, identificacion, numeroCarnet);
@@ -67,7 +66,7 @@ public class SistemaReserva {
         mostrarEspaciosDisponibles();
         System.out.print("Seleccione el número del espacio deportivo que desea reservar: ");
         int opcionEspacio = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine(); // Consumir nueva línea
 
         if (opcionEspacio < 1 || opcionEspacio > listaEspaciosDeportivos.size()) {
             System.out.println("Opción inválida.");
@@ -81,9 +80,8 @@ public class SistemaReserva {
         System.out.print("Ingrese el nombre de la reserva: ");
         String nombreReserva = scanner.nextLine();
 
-        try {
-             System.out.print("Ingrese la fecha de inicio (yyyy-mm-dd): ");
-        Date fechaInicio = new Date(scanner.nextLine()); 
+        System.out.print("Ingrese la fecha de inicio (yyyy-mm-dd): ");
+        Date fechaInicio = new Date(scanner.nextLine()); // Suponer que el usuario ingresa el formato correcto
 
         System.out.print("Ingrese la fecha de fin (yyyy-mm-dd): ");
         Date fechaFin = new Date(scanner.nextLine());
@@ -99,9 +97,6 @@ public class SistemaReserva {
 
         System.out.println("¡Reserva creada con éxito!");
         System.out.println("Detalles de la reserva: " + nuevaReserva);
-        } catch (Exception e) {
-            System.out.println("Formato de fecha incorrecto");
-        }
     }
 
     public void mostrarReservas() {
@@ -110,15 +105,7 @@ public class SistemaReserva {
             System.out.println(reserva);
         }
     }
-public void mostrarEspaciosDisponibles(){
- System.out.println("Espacios deportivos disponibles:");
-    for (int i = 0; i < listaEspaciosDeportivos.size(); i++) {
-        EspacioDeportivo espacio = listaEspaciosDeportivos.get(i){
-        System.out.println((i+1)+ "."+ espacio.getNombreEspacio()+ " - tipo:" 
-               + espacio.getTipoEspacio()+ ", capacidad:"+ espacio.getCapacidad()); 
-    }
-}
-    
+
     public static void main(String[] args) {
         SistemaReserva sistemaReserva = new SistemaReserva();
         Scanner scanner = new Scanner(System.in);
@@ -160,4 +147,12 @@ public void mostrarEspaciosDisponibles(){
             
         }
     }
+    public void mostrarEspaciosDisponibles() {
+    System.out.println("Espacios deportivos disponibles:");
+    for (int i = 0; i < listaEspaciosDeportivos.size(); i++) {
+        EspacioDeportivo espacio = listaEspaciosDeportivos.get(i);
+        System.out.println(espacio.getTipo() 
+            + (i + 1) + ". " + espacio.getNombreEspacio() + " - Tipo: " + ", Capacidad: " + espacio.getCapacidad());
+    }
+}
 }

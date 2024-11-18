@@ -1,5 +1,6 @@
 package Espacios;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -11,6 +12,8 @@ public class Reserva {
     private String nombreReserva;
     private Date fechaInicio;
     private Date fechaFin;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
     private boolean estado;
 
      public Reserva(int idReserva, String nombreReserva, Date fechaInicio, Date fechaFin, boolean estado) {
@@ -21,9 +24,17 @@ public class Reserva {
         this.estado = estado;
     }
 
-    Reserva(int i, String nombreReserva, Date fechaInicio, Date fechaFin, Date horaInicio, Date horaFin, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Reserva(int i, String nombreReserva, Date fechaInicio, Date fechaFin, LocalTime horaInicio, LocalTime horaFin, boolean b) {
+        this.idReserva = i;
+        this.nombreReserva = nombreReserva;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.estado = b;
     }
+
+     
 
     // Getters y setters aquí según sea necesario
     public int getIdReserva() { return idReserva; }
@@ -36,4 +47,16 @@ public class Reserva {
     public boolean validarDisponibilidad() {
         return !estado; // Devuelve true si no está reservada
     }
+
+    @Override
+    public String toString() {
+        return " Reserva: \n Identificacion de Reserva:  " + idReserva + 
+                "\n Nombre de Reserva:  " + nombreReserva + 
+                "\n Fecha de Inicio:  " + fechaInicio + 
+                "\n Fecha que finaliza:  " + fechaFin +
+                "\n Hora de Inicio:  " + horaInicio + 
+                "\n Hora que finaliza:  " + horaFin +
+                "\n Estado:  " + estado + '}';
+    }
+    
 }

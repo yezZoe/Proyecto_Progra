@@ -173,6 +173,38 @@ public class SistemaReserva {
                 System.out.println("Servicio seleccionado: ");
             }
         }
+        
+         if (opcionEspacio == 3) {
+            CanchaSintetica bola = new CanchaSintetica (language,
+                    language, opcionEspacio,
+                    opcionEspacio, language,
+                    LocalTime.MIDNIGHT,
+                    LocalTime.MIDNIGHT,
+                    opcionEspacio,
+                    opcionEspacio, true);
+
+            bola.tamañoCancha();
+            
+            bola.mostrarEquiposDisponibles();
+
+            bola.mostrarServiciosAdicionalesCAN();
+            System.out.println(translate(
+                    "- 0.I do not want any additional service",
+                    "- 0.No deseo ningun servicio adicional",
+                    "- 0.Não quero nenhum serviço adicional"));
+
+            System.out.println(translate(
+                    "Select an additional service for the synthetic field area:",
+                    "Seleccione un servicio adicional para la zona de cancha sintética: ",
+                    "Selecione um serviço adicional para na área de gramado sintético:"));
+
+            int op3 = scanner.nextInt();
+            scanner.nextLine();
+
+            if (op3 != 0) {
+                System.out.println("Servicio seleccionado: ");
+            }
+        }    
 
         if (opcionEspacio < 1 || opcionEspacio > listaEspaciosDeportivos.size()) {
             System.out.println(translate(

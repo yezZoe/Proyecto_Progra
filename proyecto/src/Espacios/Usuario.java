@@ -12,17 +12,12 @@ import java.util.Date;
  */
 public class Usuario {
 
-    private final String nombre;
-    
-    private final String identificacion;
-    
+    private final String nombre;   
+    private final String identificacion;   
     private String ingresoPin;
-    
     private int intentosFallidos = 0;
-    
-    private boolean cuentaBloqueada = false;
-    
     private final ArrayList<Date> historialSecc = new ArrayList<>();
+    SistemaReserva sistema = new SistemaReserva();
 
 
     public Usuario(String nombre, String identificacion) {
@@ -34,48 +29,57 @@ public class Usuario {
     
     public boolean iniciarSesion(String ingresoPin, String identificacion) {
         
-        if (cuentaBloqueada) {
-            System.out.println("La cuenta está bloqueada. Intente más tarde.");
-            return false;
-        }
        
        if (nombre.equals(this.nombre));{
-         System.out.println("Nombre de usuario correctamento");
+         System.out.println(sistema.translate(
+            "User name correctly",
+            "Nombre de usuario correctamente",
+            "O nome de usuário está correto"
+         ));
         } 
         
         if (identificacion.equals(this.identificacion));{
-         System.out.println("Identificacion de usuario correctamento");
+        System.out.println(sistema.translate(
+            "User ID is correct",
+            "Identificacion de usuario correctamento",
+            "Login de usuário bem-sucedido"
+         ));
         }
         
         if(this.ingresoPin.equals(ingresoPin)) {  
-            System.out.println("Inicio de sesión exitoso");
+           System.out.println(sistema.translate(
+            "Successful login",
+            "Inicio de sesión exitoso",
+            "Login bem-sucedido"
+         ));
             historialSecc.add(new Date());
             intentosFallidos = 0;
             return true;
         } else {
             intentosFallidos++;
-            System.out.println("ID de usuario o PIN incorrectos");
+            System.out.println(sistema.translate(
+            "Incorrect User ID or PIN",
+            "ID de usuario o PIN incorrectos",
+            "ID de usuário ou PIN incorretos"
+            ));
             
             if (intentosFallidos >= 3) {
-                cuentaBloqueada = true;
-                System.out.println("Demasiados intentos fallidos. La cuenta ha sido bloqueada.");
+             System.out.println(sistema.translate(
+                "Too many failed attempts.",
+                "Demasiados intentos fallidos.",
+                "Muitas tentativas fracassadas."
+             ));
             }
             return false;
         }
     }
 
-    public void cerrarSesion() {
-        System.out.println("Sesión cerrada correctamente.");
-    }
-    
-     public void desbloquearCuenta() {
-        cuentaBloqueada = false;
-        intentosFallidos = 0;
-        System.out.println("La cuenta ha sido desbloqueada.");
-    }
-     
      public void mostrarHistorialInicioSesion() {
-        System.out.println("Historial de inicio de sesión:");
+         System.out.println(sistema.translate(
+            "Login history:",
+            "Historial de inicio de sesión:",
+            "Histórico de login:"
+        ));
         for (Date fecha : historialSecc) {
             System.out.println(fecha);
         }
@@ -91,7 +95,12 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario: " + getNombre() + ", Identificación: " + getIdentificacion();
+        System.out.println(sistema.translate(
+        "Usuario: " + getNombre() + ", Identificación: " + getIdentificacion(),
+        "Usuario: " + getNombre() + ", Identificación: " + getIdentificacion(),
+        "Usuario: " + getNombre() + ", Identificación: " + getIdentificacion()
+        ));
+        return null;
     }
 
     /**

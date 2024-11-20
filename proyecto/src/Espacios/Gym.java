@@ -24,7 +24,16 @@ public class Gym extends EspacioDeportivo {
      * @param capacidadMaxima Capacidad máxima de usuarios.
      * @param cantidadMaquinas Cantidad de máquinas disponibles.
      * @param language
+     *.
      */
+    
+     /**
+      * Constructor que inicializa un gimnasio con los datos proporcionados.
+     * Este constructor establece el nombre, tipo, capacidad, horarios,
+     * cantidad de máquinas y servicios adicionales del gimnasio.
+      * 
+      */
+     
     public Gym(String nombreEspacio, String tipoEspacio, int capacidadEspacio,
             int idEspacio,
             String ubicacionEspacio, String horarioApertura,
@@ -58,7 +67,7 @@ public class Gym extends EspacioDeportivo {
     public void verDisponibilidadEspacio() {
         super.verDisponibilidadEspacio(); // Llamar al método de la clase base
 
-        // Mostrar mensajes traducidos según el idioma guardado en 'language'
+        // Mostrar mensajes traducidos según el idioma 
         System.out.println(sistema.translate(
                 "Opening hours 6am"
                 , "Horario de apertura 6am"
@@ -86,35 +95,72 @@ public class Gym extends EspacioDeportivo {
         }
     }
 // Getters y setters
+    /**
+     * Obtiene el horario de apertura del gimnasio.
+     *
+     * @return El horario de apertura del gimnasio.
+     */
 
     public String getHorarioApertura() {
         return horarioApertura;
     }
 
+    /**
+     * Establece el horario de apertura del gimnasio.
+     *
+     * @param horarioApertura El nuevo horario de apertura del gimnasio.
+     */
     public void setHorarioApertura(String horarioApertura) {
         this.horarioApertura = horarioApertura;
     }
+    /**
+     * Obtiene el horario de cierre del gimnasio.
+     *
+     * @return El horario de cierre del gimnasio.
+     */
 
     public String getHorarioCierre() {
         return horarioCierre;
     }
-
+/**
+     * Establece el horario de cierre del gimnasio.
+     *
+     * @param horarioCierre El nuevo horario de cierre del gimnasio.
+     */
     public void setHorarioCierre(String horarioCierre) {
         this.horarioCierre = horarioCierre;
     }
-
+/**
+     * Obtiene la capacidad máxima del gimnasio.
+     *
+     * @return La capacidad máxima del gimnasio.
+     */
     public int getCapacidadMaxima() {
         return capacidadMaxima;
     }
 
+    /**
+     * Establece la capacidad máxima del gimnasio.
+     *
+     * @param capacidadMaxima La nueva capacidad máxima del gimnasio.
+     */
     public void setCapacidadMaxima(int capacidadMaxima) {
         this.capacidadMaxima = capacidadMaxima;
     }
 
+    /**
+     * Obtiene el número de máquinas disponibles en el gimnasio.
+     *
+     * @return El número de máquinas disponibles.
+     */
     public int getCantidadMaquinas() {
         return cantidadMaquinas;
     }
-
+/**
+     * Establece el número de máquinas disponibles en el gimnasio.
+     *
+     * @param cantidadMaquinas La nueva cantidad de máquinas disponibles.
+     */
     public void setCantidadMaquinas(int cantidadMaquinas) {
         this.cantidadMaquinas = cantidadMaquinas;
     }

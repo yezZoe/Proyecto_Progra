@@ -10,7 +10,11 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase que representa el sistema de reservas.
+ * Clase que representa el sistema de reservas deportivas. Permite registrar
+ * usuarios, gestionar reservas y consultar espacios disponibles.
+ *
+ * Class representing the sports reservation system. Enables user registration,
+ * reservation management, and checking available spaces.
  */
 public class SistemaReserva {
 
@@ -20,6 +24,11 @@ public class SistemaReserva {
     private int idReservaActual = 1;
     public static String language = "EN";
 
+    /**
+     * Constructor para inicializar los espacios deportivos disponibles.
+     *
+     * Constructor to initialize available sports spaces.
+     */
     public SistemaReserva() {
 
         listaEspaciosDeportivos.add(new EspacioDeportivo(
@@ -33,6 +42,16 @@ public class SistemaReserva {
                 "Gimnasia", 20));
     }
 
+    /**
+     * Método para traducir textos entre inglés, español y portugués.
+     *
+     * Method to translate texts between English, Spanish, and Portuguese.
+     *
+     * @param en Texto en inglés / Text in English.
+     * @param es Texto en español / Text in Spanish.
+     * @param pt Texto en portugués / Text in Portuguese.
+     * @return Traducción correspondiente / Corresponding translation.
+     */
     public static String translate(String en, String es, String pt) {
         switch (language) {
             case "ES":
@@ -46,12 +65,20 @@ public class SistemaReserva {
         }
     }
 
+    /**
+     * Método para registrar usuarios en el sistema, diferenciando entre
+     * clientes y administradores.
+     *
+     * Method to register users in the system, distinguishing between clients
+     * and administrators.
+     */
     public void registrarUsuario() {
         Scanner scanner = new Scanner(System.in);
         System.out.println(translate(
                 "Select user type",
                 "seleccione el tipo de usuario",
                 " Selecione o tipo de usuario:"));
+        System.out.println("-----------------------------------------");
 
         System.out.println("1." + translate(
                 "Client",
@@ -61,6 +88,7 @@ public class SistemaReserva {
                 "Administrator",
                 "Administrador",
                 "Administrator"));
+        System.out.println("-----------------------------------------");
 
         int tipoUsuario = scanner.nextInt();
         scanner.nextLine();
@@ -116,6 +144,13 @@ public class SistemaReserva {
         }
     }
 
+    /**
+     * Método para crear una nueva reserva con fechas, horas y espacios
+     * seleccionados.
+     *
+     * Method to create a new reservation with selected dates, times, and
+     * spaces.
+     */
     public void crearReserva() {
         Scanner scanner = new Scanner(System.in);
 
@@ -126,15 +161,20 @@ public class SistemaReserva {
         mostrarEspaciosDisponibles();
 
         System.out.print(translate(
-                "Select the number of the sports space you want to reserve: ",
-                "Seleccione el número del espacio deportivo que desea reservar: ",
-                "Selecione o número do espaço desportivo que deseja reservar: "));
+                "Select the number of the sports space you want to"
+                + " reserve: ",
+                "Seleccione el número del espacio deportivo que desea"
+                + " reservar: ",
+                "Selecione o número do espaço desportivo que deseja "
+                + "reservar: "));
         int opcionEspacio = scanner.nextInt();
-        EspacioDeportivo espacioSeleccionado = listaEspaciosDeportivos.get(opcionEspacio - 1);
+        EspacioDeportivo espacioSeleccionado
+                = listaEspaciosDeportivos.get(opcionEspacio - 1);
         System.out.println(translate(
                 "You selected: ",
                 "Ha seleccionado: ",
-                "Você selecionou: ") + espacioSeleccionado.getNombreEspacio());
+                "Você selecionou: ")
+                + espacioSeleccionado.getNombreEspacio());
 
         if (opcionEspacio == 1) {
             AreaNatacion temp = new AreaNatacion(language,
@@ -146,11 +186,12 @@ public class SistemaReserva {
                     opcionEspacio, true);
 
             temp.mostrarProfundidad();
-            
+
             System.out.println(translate(
                     "Enter the desired water temperature",
                     "Ingrese la temperatura deseada del agua",
                     "Insira a temperatura da água desejada"));
+            System.out.println("-----------------------------------------");
             double temperature = scanner.nextDouble();
 
             temp.ajustarTemperatura(temperature);
@@ -163,8 +204,10 @@ public class SistemaReserva {
 
             System.out.println(translate(
                     "Select an additional service for the swimming area:",
-                    "Seleccione un servicio adicional para el area de natacion: ",
-                    "Selecione um serviço adicional para a área de natação:"));
+                    "Seleccione un servicio adicional para el area de "
+                    + "natacion: ",
+                    "Selecione um serviço adicional para a"
+                    + " área de natação:"));
 
             int op1 = scanner.nextInt();
             scanner.nextLine();
@@ -173,18 +216,18 @@ public class SistemaReserva {
                 System.out.println("Servicio seleccionado: ");
             }
         }
-        
-         if (opcionEspacio == 3) {
-            CanchaSintetica bola = new CanchaSintetica (language,
+
+        if (opcionEspacio == 2) {
+            CanchaSintetica bola = new CanchaSintetica(language,
                     language, opcionEspacio,
                     opcionEspacio, language,
                     LocalTime.MIDNIGHT,
                     LocalTime.MIDNIGHT,
                     opcionEspacio,
                     opcionEspacio, true);
-
+            System.out.println("-----------------------------------------");
             bola.tamañoCancha();
-            
+            System.out.println("-----------------------------------------");
             bola.mostrarEquiposDisponibles();
 
             bola.mostrarServiciosAdicionalesCAN();
@@ -194,9 +237,44 @@ public class SistemaReserva {
                     "- 0.Não quero nenhum serviço adicional"));
 
             System.out.println(translate(
-                    "Select an additional service for the synthetic field area:",
-                    "Seleccione un servicio adicional para la zona de cancha sintética: ",
-                    "Selecione um serviço adicional para na área de gramado sintético:"));
+                    "Select an additional service for the synthetic"
+                    + " field area:",
+                    "Seleccione un servicio adicional para la zona de "
+                    + "cancha sintética: ",
+                    "Selecione um serviço adicional para na área de "
+                    + "gramado sintético:"));
+
+            int op2 = scanner.nextInt();
+            scanner.nextLine();
+
+            if (op2 != 0) {
+                System.out.println("Servicio seleccionado: ");
+            }
+        }
+        if (opcionEspacio == 3) {
+            Gym pesa = new Gym(language,
+                    language,
+                    opcionEspacio,
+                    opcionEspacio,
+                    language,
+                    language,
+                    opcionEspacio,
+                    opcionEspacio, language, language);
+
+            pesa.verDisponibilidadEspacio();
+            System.out.println("-----------------------------------------");
+            pesa.mostrarServiciosAdicionalesGYM();
+            System.out.println("-----------------------------------------");
+
+            System.out.println(translate(
+                    "- 0.I do not want any additional service",
+                    "- 0.No deseo ningun servicio adicional",
+                    "- 0.Não quero nenhum serviço adicional"));
+
+            System.out.println(translate(
+                    "Select an additional service:",
+                    "Seleccione un servicio adicional : ",
+                    "Selecione um serviço adicional: "));
 
             int op3 = scanner.nextInt();
             scanner.nextLine();
@@ -204,7 +282,7 @@ public class SistemaReserva {
             if (op3 != 0) {
                 System.out.println("Servicio seleccionado: ");
             }
-        }    
+        }
 
         if (opcionEspacio < 1 || opcionEspacio > listaEspaciosDeportivos.size()) {
             System.out.println(translate(
@@ -213,7 +291,7 @@ public class SistemaReserva {
                     "Opção inválida."));
             return;
         }
-
+        System.out.println("-----------------------------------------");
         System.out.print(translate(
                 "Enter the reservation name: ",
                 "Ingrese el nombre de la reserva: ",
@@ -221,8 +299,10 @@ public class SistemaReserva {
         String nombreReserva = scanner.nextLine();
 
         try {
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
-            dateFormatter.setLenient(false); // Asegura validación estricta
+            SimpleDateFormat dateFormatter
+                    = new SimpleDateFormat("yyyy/MM/dd");
+            dateFormatter.setLenient(false);
+// Asegura validación estricta
 
             System.out.print(translate(
                     "Enter the start date (yyyy/MM/dd): ",

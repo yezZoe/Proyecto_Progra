@@ -17,7 +17,8 @@ public class EspacioDeportivo {
      * @param tipoEspacio Tipo de espacio deportivo.
      */
     
-    public EspacioDeportivo(String nombreEspacio, String tipoEspacio, int capacidadEspacio) {
+    public EspacioDeportivo(String nombreEspacio, String tipoEspacio, 
+            int capacidadEspacio) {
     this.nombreEspacio = nombreEspacio;
     this.tipoEspacio = tipoEspacio;
     this.capacidadEspacio = capacidadEspacio;
@@ -36,7 +37,8 @@ public class EspacioDeportivo {
 
     @Override
     public String toString() {
-        return nombreEspacio + " (" + tipoEspacio + "), Capacidad: " + capacidadEspacio;
+        return nombreEspacio + " (" + tipoEspacio + "), Capacidad: " + 
+                capacidadEspacio;
     }
 
     int getTipo() {
@@ -44,7 +46,7 @@ public class EspacioDeportivo {
     }
 
     void verDisponibilidadEspacio() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+         
     }
 
     

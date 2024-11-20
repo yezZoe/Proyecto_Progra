@@ -135,9 +135,12 @@ public class AreaNatacion extends EspacioDeportivo {
 
     public List<String> serviciosAdicionalesNAT() {
         List<String> servicios = new ArrayList<>();
-        servicios.add(sistema.translate("1.Sauna", "1.Sauna", "1.Sauna"));
-        servicios.add(sistema.translate("2.Jacuzzi", "2.Jacuzzi", "2.Jacuzzi"));
-        servicios.add(sistema.translate("3.Personal Trainer", "3.Entrenador personal", "3.Treinador pessoal"));
+        servicios.add(sistema.translate("1.Sauna", 
+                "1.Sauna", "1.Sauna"));
+        servicios.add(sistema.translate("2.Jacuzzi", 
+                "2.Jacuzzi", "2.Jacuzzi"));
+        servicios.add(sistema.translate("3.Personal Trainer",
+                "3.Entrenador personal", "3.Treinador pessoal"));
         return servicios;
     }
 }
